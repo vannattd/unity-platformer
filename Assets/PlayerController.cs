@@ -13,13 +13,16 @@ public class PlayerController : MonoBehaviour
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-    }
+        rb.freezeRotation = true;    
+        }
 
     // Update is called once per frame
     void Update()
     {
         float mag_velocity = Mathf.Abs(rb.velocity.x);
         ani.SetFloat("Speed", mag_velocity);
+        float vert_velocity = Mathf.Abs(rb.velocity.y);
+        ani.SetFloat("Falling", vert_velocity);
         Vector2 scale = player.transform.localScale;
         if(Input.GetKey(KeyCode.A)){
             Vector2 left = new Vector2(-0.05f, 0);
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             Vector2 up = new Vector2(0, 10f);
             rb.AddForce(up, ForceMode2D.Impulse);
+            ani.SetTrigger("Jumping");
+
         }
         if(Input.GetKey(KeyCode.E)){
             ani.SetTrigger("Attack");
