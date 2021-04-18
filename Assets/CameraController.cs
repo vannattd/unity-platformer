@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     GameObject camera;
 
     public Transform[] backgrounds;
-    public float[] parallaxScales;
+ public float[] parallaxScales;
  public float smoothing;
  
  private Transform cam;

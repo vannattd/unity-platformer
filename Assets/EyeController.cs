@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EyeController : MonoBehaviour
 {
+    Rigidbody2D rb;
+
     GameObject eye;
     GameObject eye1;
 
@@ -23,6 +25,9 @@ public class EyeController : MonoBehaviour
         eye = GameObject.Find("Eye1");
         eye1 = GameObject.Find("Eye2");
         eye2 = GameObject.Find("Eye3");
+        rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;    
+
 
 
     }
@@ -48,4 +53,5 @@ public class EyeController : MonoBehaviour
         eye1.transform.position = pos1;
         eye2.transform.position = pos2;
     }
-}
+
+     }
