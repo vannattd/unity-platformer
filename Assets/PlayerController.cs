@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask platform;
     GameObject player;
+    GameObject live1;
+    GameObject live2;
+    GameObject live3;
+
     Rigidbody2D rb;
     Animator ani;
     private int hitRange = 1;
@@ -17,6 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         health = 3;
         player = GameObject.Find("Player");
+        live1 = GameObject.Find("Life1");
+        live2 = GameObject.Find("Life2");
+        live3 = GameObject.Find("Life3");
         rb = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -83,7 +90,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.transform.tag == "Enemy")
          {
-             Debug.Log("Hit");
+            if(health == 3){
+                Destroy(live1);
+            }
          }
      }
 }
