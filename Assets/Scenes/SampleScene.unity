@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 283779900}
   m_Layer: 0
   m_Name: Eye2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +259,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 920231873}
   - component: {fileID: 920231872}
   m_Layer: 0
-  m_Name: UI-Lives (1)
+  m_Name: Life2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13089,6 +13089,7 @@ MonoBehaviour:
   platform:
     serializedVersion: 2
     m_Bits: 64
+  invulTime: 1
 --- !u!1 &1130617684
 GameObject:
   m_ObjectHideFlags: 0
@@ -13149,7 +13150,7 @@ GameObject:
   - component: {fileID: 1186245925}
   m_Layer: 0
   m_Name: Eye3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13269,7 +13270,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -13311,7 +13312,7 @@ GameObject:
   - component: {fileID: 1304617225}
   - component: {fileID: 1304617224}
   m_Layer: 0
-  m_Name: UI-Lives
+  m_Name: Life1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13642,7 +13643,7 @@ GameObject:
   - component: {fileID: 1840860509}
   - component: {fileID: 1840860510}
   m_Layer: 0
-  m_Name: UI-Lives (2)
+  m_Name: Life3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

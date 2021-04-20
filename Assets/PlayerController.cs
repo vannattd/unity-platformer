@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D collider;
 
     int health;
+    public float invulTime = 1f; // The time you stay invulnerable after a hit
+    private bool invulnerable = false;  // this boolean gets checked inside of the Damage function.
     // Start is called before the first frame update
     void Start()
     {
@@ -88,11 +90,29 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.transform.tag == "Enemy")
-         {
-            if(health == 3){
-                Destroy(live1);
+        if (collision.transform.tag == "Enemy"){
+            if(!invulnerable){
+                if(health == 3){
+                    Destroy(live1);
+                    StartCoroutine(JustHurt());
+                }
+                if(health == 2){
+                    Destroy(live2);
+                    StartCoroutine(JustHurt());
+                }
+                if(health == 1){
+                    Destroy(live3);
+                    Application.LoadLevel(0);        
+                }
             }
-         }
+        }
      }
+
+    IEnumerator JustHurt(){
+     invulnerable = true;
+     Debug.Log("hit");
+     yield return new WaitForSeconds(invulTime);
+     health--;
+     invulnerable = false;
+ }
 }
