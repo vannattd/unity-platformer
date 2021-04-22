@@ -5,6 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask platform;
+
+
+private float timeBetweenAttack;
+public float startTimeBetweenAttack;
+public Transform attackPos;
+public float attackRange;
+public int damage;
+public LayerMask whatIsEnemy;
+
+
+
+
+
+
     GameObject player;
     GameObject live1;
     GameObject live2;
@@ -14,6 +28,8 @@ public class PlayerController : MonoBehaviour
     Animator ani;
     private int hitRange = 1;
     BoxCollider2D collider;
+    Vector3 playerPos;
+
 
     int health;
     public float invulTime = 1f; // The time you stay invulnerable after a hit
@@ -34,12 +50,16 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        playerPos = player.transform.position;
         float mag_velocity = Mathf.Abs(rb.velocity.x);
         ani.SetFloat("Speed", mag_velocity);
         float vert_velocity = Mathf.Abs(rb.velocity.y);
         ani.SetFloat("Falling", vert_velocity);
         Vector2 scale = player.transform.localScale;
+        if(playerPos.y <= -20){
+            Application.LoadLevel(0);        
+        }
         if(Input.GetKey(KeyCode.A)){
             Vector2 left = new Vector2(-0.05f, 0);
             rb.AddForce(left, ForceMode2D.Impulse);
@@ -56,9 +76,19 @@ public class PlayerController : MonoBehaviour
             ani.SetTrigger("Jumping");
 
         }
-        if(Input.GetKey(KeyCode.E)){
-            ani.SetTrigger("Attack");
-            Attack();
+        if(timeBetweenAttack <= 0){
+            if(Input.GetKey(KeyCode.E)){
+                ani.SetTrigger("Attack");
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+                for (int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                }
+            }
+            timeBetweenAttack = startTimeBetweenAttack;
+        }
+        else{
+            timeBetweenAttack -= Time.deltaTime;
         }
         player.transform.localScale = scale;
     }
@@ -67,19 +97,6 @@ public class PlayerController : MonoBehaviour
         return health;
     }
 
-    void Attack(){
-     RaycastHit hit;
-     Vector3 forward = transform.TransformDirection(Vector3.forward);
-     Vector3 origin = transform.position;
- 
-     if(Physics.Raycast(origin, forward, out hit, hitRange ))
-     {
-         if(hit.transform.gameObject.tag == "Enemy")
-         {
-             hit.transform.gameObject.SendMessage("TakeDamage", 30);
-         }
-     }
-    }
 
     private bool isGrounded(){
         float buffer = 0.01f;
@@ -106,6 +123,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+     }
+
+     void OnDrawGizmosSelected(){
+         Gizmos.color = Color.red;
+         Gizmos.DrawWireSphere(attackPos.position, attackRange);
      }
 
     IEnumerator JustHurt(){
