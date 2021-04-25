@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Does damage to player as the eye and keeps its custom behavior
 public class EyeController : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -16,8 +18,8 @@ public class EyeController : MonoBehaviour
     Vector3 eyePos2;
 
 
-     public float t=8f; // speed
-    public float l= 10f; // length from 0 to endpoint.
+    public float t = 8f; // speed
+    public float l = 10f; // length from 0 to endpoint.
     public float posY = 1f; // Offset
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class EyeController : MonoBehaviour
         eye1 = GameObject.Find("Eye2");
         eye2 = GameObject.Find("Eye3");
         rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;    
+        rb.freezeRotation = true;
 
 
 
@@ -39,9 +41,9 @@ public class EyeController : MonoBehaviour
         eyePos1 = eye1.transform.position;
         eyePos2 = eye2.transform.position;
 
-        Vector3 pos = new Vector3 ( eyePos.x, posY+Mathf.PingPong (t * Time.time, l), 0);
-        Vector3 pos1 = new Vector3 ( eyePos1.x, posY+Mathf.PingPong (t * Time.time, l), 0);
-        Vector3 pos2 = new Vector3 ( eyePos2.x, posY+Mathf.PingPong (t * Time.time, l), 0);
+        Vector3 pos = new Vector3(eyePos.x, posY + Mathf.PingPong(t * Time.time, l), 0);
+        Vector3 pos1 = new Vector3(eyePos1.x, posY + Mathf.PingPong(t * Time.time, l), 0);
+        Vector3 pos2 = new Vector3(eyePos2.x, posY + Mathf.PingPong(t * Time.time, l), 0);
 
         // if(eyePos.y < 10){
         //     eyePos.y += 1;
@@ -54,4 +56,4 @@ public class EyeController : MonoBehaviour
         eye2.transform.position = pos2;
     }
 
-     }
+}

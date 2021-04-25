@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Controls enemies and gives them and the boss certain behavior
 public class Enemy : MonoBehaviour
 {
     public int health;

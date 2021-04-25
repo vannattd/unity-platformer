@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Used to control the player and it's interactions
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask platform;
