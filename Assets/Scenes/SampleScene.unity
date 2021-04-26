@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &258325299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 258325300}
+  m_Layer: 7
+  m_Name: AttackPosGob2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &258325300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258325299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1473021694}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283779894
 GameObject:
   m_ObjectHideFlags: 0
@@ -12936,7 +12966,7 @@ GameObject:
   - component: {fileID: 1047495679}
   - component: {fileID: 1047495678}
   - component: {fileID: 1047495680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -13151,7 +13181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171743685}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13421,6 +13451,36 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400445009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400445010}
+  m_Layer: 7
+  m_Name: AttackPosGob1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400445010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400445009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1875818150}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1446192718
 GameObject:
   m_ObjectHideFlags: 0
@@ -13689,7 +13749,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.01, y: 2.87, z: 0}
   m_LocalScale: {x: -44.80073, y: 43.12787, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 258325300}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13706,7 +13767,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  speed: 0.3
+  speed: 0.5
+  startTimeBetweenAttack: 0.3
+  attackPos: {fileID: 258325300}
+  attackRange: 1
+  damage: 1
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &1473021696
 Rigidbody2D:
   serializedVersion: 4
@@ -13850,8 +13918,8 @@ GameObject:
   - component: {fileID: 1729995115}
   - component: {fileID: 1729995114}
   - component: {fileID: 1729995113}
-  m_Layer: 0
-  m_Name: Minotaur - Sprite Sheet_0
+  m_Layer: 7
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13937,7 +14005,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 91.36, y: 0.05, z: 0}
   m_LocalScale: {x: -111.75468, y: 114.85793, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1871633731}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13955,6 +14024,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   speed: 0
+  startTimeBetweenAttack: 0.3
+  attackPos: {fileID: 1871633731}
+  attackRange: 2
+  damage: 1
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &1729995114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14084,6 +14160,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1871633730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871633731}
+  m_Layer: 7
+  m_Name: BossAttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871633731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871633730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1729995112}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1875818147
 GameObject:
   m_ObjectHideFlags: 0
@@ -14185,7 +14291,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.77, y: -3.38, z: 0}
   m_LocalScale: {x: -44.80073, y: 43.12787, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1400445010}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14250,6 +14357,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   speed: 0.5
+  startTimeBetweenAttack: 0.3
+  attackPos: {fileID: 1400445010}
+  attackRange: 1
+  damage: 1
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2088347852
 GameObject:
   m_ObjectHideFlags: 0
